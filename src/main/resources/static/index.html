@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Bank Management</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1>Bank Account Management</h1>
+			<div class="card">
+				<h2>Add Bank</h2>
+				<form id="bankForm">
+					<input type="text" id="bankName" placeholder="Bank Name" required>
+					<input type="text" id="ifscCode" placeholder="IFSC Code" required>
+					<button type="submit">Save Bank</button>
+				</form>
+			</div>
+			<div class="card">
+				<h2>Add Account</h2>
+				<form id="accountForm">
+					<select id="bankSelect" required>
+						<option value="">Select Bank</option>
+					</select>
+					<input type="text" id="holderName" placeholder="Holder Name" required>
+					<input type="number" id="balance" placeholder="Balance" required>
+					<button type="submit">Save Account</button>
+				</form>
+			</div>
+			<div class="card">
+				<h2>Data View</h2>
+				<button onclick="localData()">Refresh</button>
+				<div id="display"></div>
+			</div>
+		</div>
+		<script src="index.js"></script>
+	</body>
+</html>
