@@ -1,6 +1,7 @@
 package com.bank.app.controller;
 import java.util.List;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +26,24 @@ public class BankController{
 	public Bank createBank(@RequestBody Bank bank) {
 		return bankService.saveBank(bank);
 	}
+	@GetMapping("/{id}")
+	public Bank getBankById(@PathVariable Long id) {
+	    return bankService.getBankById(id);
+	}
+	@DeleteMapping("/{id}")
+	public String deleteBank(@PathVariable Long id) {
+		bankService.deleteBank(id);
+		return "bank deleted sucessfull";
+	}
 	@GetMapping
 	public List<Bank> getAllBanks(){
 		return bankService.getAllBanks();
 	}
+	@PutMapping("/{id}")
+	public Bank updateBank(@PathVariable Long id,
+            @RequestBody Bank bank) {
+return bankService.updateBank(id, bank);
+}
 	@PostMapping("/{bankId}/accounts")
 	public Account addAccount(@PathVariable Long bankId,@RequestBody AccountDTO accountDTO) {
 		Account account=new Account();
